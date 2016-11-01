@@ -9,21 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var map_component_1 = require('./map/map.component');
-var AppModule = (function () {
-    function AppModule() {
+var MapComponent = (function () {
+    function MapComponent() {
+        this.pageTitle = 'Welcome';
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent, map_component_1.MapComponent],
-            bootstrap: [app_component_1.AppComponent]
+    MapComponent.prototype.ngOnInit = function () {
+        var uluru = { lat: -25.363, lng: 131.044 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    };
+    MapComponent = __decorate([
+        core_1.Component({
+            selector: 'map-container',
+            templateUrl: 'app/map/map.component.html',
+            styleUrls: ['app/map/map.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], MapComponent);
+    return MapComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.MapComponent = MapComponent;
+//# sourceMappingURL=map.component.js.map

@@ -1,0 +1,12 @@
+﻿
+:host {
+  display: block;
+  border: 1px solid black;
+  height: 100%;
+}
+
+
+#map {
+    height: 400px;
+    width: 100%;
+}

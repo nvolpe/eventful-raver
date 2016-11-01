@@ -96,12 +96,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.component.css" />
     <Content Include="app\assets\css\styles.css" />
     <Content Include="app\assets\images\android-desktop.png" />
     <Content Include="app\assets\images\dog.png" />
     <Content Include="app\assets\images\favicon.png" />
     <Content Include="app\assets\images\ios-desktop.png" />
     <Content Include="app\assets\images\user.jpg" />
+    <Content Include="app\map\map.component.css" />
+    <Content Include="app\map\map.component.html" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -131,6 +134,7 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\map\map.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

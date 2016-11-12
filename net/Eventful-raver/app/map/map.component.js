@@ -23,6 +23,7 @@ var MapComponent = (function () {
             position: uluru,
             map: map
         });
+        console.log('Succesfully loaded the map');
     };
     MapComponent = __decorate([
         core_1.Component({

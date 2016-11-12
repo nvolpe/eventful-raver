@@ -1,12 +1,18 @@
 ﻿
-:host {
+/*:host {
   display: block;
   border: 1px solid black;
   height: 100%;
-}
+}*/
 
 
 #map {
-    height: 400px;
+    height: 100%;
     width: 100%;
 }
+
+
+/*#map-container {
+    height: 100%;
+    width: 100%;
+}*/

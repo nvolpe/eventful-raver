@@ -1,3 +1,18 @@
-﻿:host {
+﻿.map-container {
     height: 600px;
+}
+
+/*:host {
+    height: 100vh;
+    background-color: blue;
+}*/
+
+.my-app {
+    height: 100%;
+}
+
+.page-content {
+    height: 100vh;
+    background-color: darkkhaki;
+    margin-top: -64px;
 }

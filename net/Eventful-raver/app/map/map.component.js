@@ -27,7 +27,7 @@ var MapComponent = (function () {
     };
     MapComponent = __decorate([
         core_1.Component({
-            selector: 'map-container',
+            selector: '.map-container',
             templateUrl: 'app/map/map.component.html',
             styleUrls: ['app/map/map.component.css']
         }), 

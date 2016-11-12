@@ -3,7 +3,7 @@
 declare var google: any;
 
 @Component({
-    selector: 'map-container',
+    selector: '.map-container',
     templateUrl: 'app/map/map.component.html',
     styleUrls: ['app/map/map.component.css']
 })

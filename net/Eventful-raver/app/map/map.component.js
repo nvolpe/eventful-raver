@@ -9,19 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var event_service_1 = require('../events/event.service');
 var MapComponent = (function () {
-    function MapComponent() {
-        this.pageTitle = 'Welcome';
+    function MapComponent(_eventService) {
+        this._eventService = _eventService;
     }
     MapComponent.prototype.ngOnInit = function () {
         var uluru = { lat: -25.363, lng: 131.044 };
-        var map = new google.maps.Map(document.getElementById('map'), {
+        this.map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
             center: uluru
         });
         var marker = new google.maps.Marker({
             position: uluru,
-            map: map
+            map: this.map
         });
         console.log('Succesfully loaded the map');
     };
@@ -31,7 +32,7 @@ var MapComponent = (function () {
             templateUrl: 'app/map/map.component.html',
             styleUrls: ['app/map/map.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [event_service_1.EventService])
     ], MapComponent);
     return MapComponent;
 }());

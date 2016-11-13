@@ -133,6 +133,8 @@
     <TypeScriptCompile Include="app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\events\event.service.ts" />
+    <TypeScriptCompile Include="app\events\event.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\map\map.component.ts" />
   </ItemGroup>

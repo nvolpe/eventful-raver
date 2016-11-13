@@ -17,23 +17,30 @@ require('rxjs/add/operator/map');
 var EventService = (function () {
     function EventService(_http) {
         this._http = _http;
-        this._jamBaseUrl = 'api/products/products.json';
+        this._jamBaseUrl = 'http://api.jambase.com/events?zipCode=95128&radius=50&page=0&api_key=zamcjqnczhp2yerqttzmdfvr';
     }
-    EventService.prototype.getProducts = function () {
+    EventService.prototype.getEvents = function () {
         return this._http.get(this._jamBaseUrl)
-            .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .map(this.extractData)
             .catch(this.handleError);
     };
-    //getProduct(id: number): Observable<IEvent> {
-    //    return this.getProducts()
-    //        .map((products: IEvent[]) => products.find(p => p.productId === id));
-    //}
+    EventService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.data || {};
+    };
     EventService.prototype.handleError = function (error) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error(error);
-        return Observable_1.Observable.throw(error.json().error || 'Server error');
+        // In a real world app, we might use a remote logging infrastructure
+        var errMsg;
+        if (error instanceof http_1.Response) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
+        }
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable_1.Observable.throw(errMsg);
     };
     EventService = __decorate([
         core_1.Injectable(), 

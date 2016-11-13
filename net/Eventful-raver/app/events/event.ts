@@ -1,5 +1,5 @@
 ﻿/* Defines the event entity */
-export interface IEvent {
+export class Event {
     eventId: number;
     eventName: string;
 }

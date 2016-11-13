@@ -6,30 +6,37 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { IEvent } from './event';
+import { Event } from './event';
 
 @Injectable()
 export class EventService {
-    private _jamBaseUrl = 'api/products/products.json';
+    private _jamBaseUrl = 'http://api.jambase.com/events?zipCode=95128&radius=50&page=0&api_key=zamcjqnczhp2yerqttzmdfvr';
 
     constructor(private _http: Http) { }
 
-    getProducts(): Observable<IEvent[]> {
+    getEvents(): Observable<Event[]> {
         return this._http.get(this._jamBaseUrl)
-            .map((response: Response) => <IEvent[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
-    //getProduct(id: number): Observable<IEvent> {
-    //    return this.getProducts()
-    //        .map((products: IEvent[]) => products.find(p => p.productId === id));
-    //}
-
-    private handleError(error: Response) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+    private extractData(res: Response) {
+        let body = res.json();
+        return body.data || {};
     }
+
+    private handleError(error: Response | any) {
+        // In a real world app, we might use a remote logging infrastructure
+        let errMsg: string;
+        if (error instanceof Response) {
+            const body = error.json() || '';
+            const err = body.error || JSON.stringify(body);
+            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        } else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable.throw(errMsg);
+    }
+}
 }

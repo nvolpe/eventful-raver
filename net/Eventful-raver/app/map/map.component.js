@@ -15,6 +15,7 @@ var MapComponent = (function () {
         this._eventService = _eventService;
     }
     MapComponent.prototype.ngOnInit = function () {
+        this.getEvents();
         var uluru = { lat: -25.363, lng: 131.044 };
         this.map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
@@ -25,6 +26,11 @@ var MapComponent = (function () {
             map: this.map
         });
         console.log('Succesfully loaded the map');
+    };
+    MapComponent.prototype.getEvents = function () {
+        var _this = this;
+        this._eventService.getEvents()
+            .subscribe(function (events) { return _this.events = events; }, function (error) { return _this.errorMessage = error; });
     };
     MapComponent = __decorate([
         core_1.Component({

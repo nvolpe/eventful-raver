@@ -12,6 +12,8 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
+var header_component_1 = require('./header/header.component');
+var sideMenu_component_1 = require('./sideMenu/sideMenu.component');
 var map_component_1 = require('./map/map.component');
 var event_service_1 = require('./events/event.service');
 var AppModule = (function () {
@@ -20,7 +22,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, map_component_1.MapComponent],
+            declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, sideMenu_component_1.SideMenuComponent, map_component_1.MapComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [
                 event_service_1.EventService

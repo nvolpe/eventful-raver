@@ -18,9 +18,7 @@ export class MapComponent implements OnInit {
     constructor(private _eventService: EventService) {
     }
 
-
     ngOnInit(): void {
-
         this.getEvents();
 
         let uluru = { lat: -25.363, lng: 131.044 };

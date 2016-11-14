@@ -39,4 +39,3 @@ export class EventService {
         return Observable.throw(errMsg);
     }
 }
-}
